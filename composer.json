@@ -1,14 +1,14 @@
 {
-	"name": "beapi/disable-comments",
-	"version": "1.0.0",
+	"name": "webjive/simple-disable-comments",
+	"version": "1.0.2",
 	"description": "Completely disables comments functionality in WordPress. Zero configuration needed.",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
-			"name": "BeAPI",
-			"email": "contact@beapi.fr",
-			"homepage": "https://beapi.fr"
+			"name": "WebJIVE",
+			"email": "support@web-jive.com",
+			"homepage": "https://web-jive.com"
 		}
 	],
 	"keywords": [
@@ -19,10 +19,10 @@
 		"gutenberg",
 		"blocks"
 	],
-	"homepage": "https://github.com/BeAPI/disable-comments",
+	"homepage": "https://github.com/webjive/Simple-Disable-Comments",
 	"support": {
-		"issues": "https://github.com/BeAPI/disable-comments/issues",
-		"source": "https://github.com/BeAPI/disable-comments"
+		"issues": "https://github.com/webjive/Simple-Disable-Comments/issues",
+		"source": "https://github.com/webjive/Simple-Disable-Comments"
 	},
 	"require": {
 		"php": ">=7.4",
