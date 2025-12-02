@@ -1,32 +1,36 @@
 <?php
 /**
- * Plugin Name: Disable Comments
- * Plugin URI: https://github.com/BeAPI/disable-comments
+ * Plugin Name: Simple Disable Comments
+ * Plugin URI: https://github.com/webjive/Simple-Disable-Comments
  * Description: Completely disables comments functionality in WordPress. Zero configuration needed.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires at least: 5.0
  * Requires PHP: 7.4
- * Author: BeAPI
- * Author URI: https://beapi.fr
+ * Author: WebJIVE
+ * Author URI: https://web-jive.com
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: disable-comments
  * Domain Path: /languages
- * Update URI: https://github.com/BeAPI/disable-comments/releases/latest
+ * Update URI: https://github.com/webjive/Simple-Disable-Comments/releases/latest
  *
- * Inspired by:
+ * Forked from BeAPI/disable-comments
+ * Original inspiration by:
  * - Disable Comments plugin: https://wordpress.org/plugins/disable-comments/
  * - WPBeginner Tutorial: https://www.wpbeginner.com/wp-tutorials/how-to-completely-disable-comments-in-wordpress/
  *
- * @package DisableComments
+ * @package SimpleDisableComments
  */
 
-namespace BEAPI\DisableComments;
+namespace WebJIVE\SimpleDisableComments;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+
+// Define plugin version.
+define( 'SIMPLE_DISABLE_COMMENTS_VERSION', '1.0.2' );
 
 /**
  * Initialize WordPress hooks.
@@ -36,6 +40,9 @@ if ( ! defined( 'WPINC' ) ) {
  * @return void
  */
 function init() {
+	// Load text domain for translations.
+	add_action( 'init', __NAMESPACE__ . '\\load_textdomain' );
+
 	// Disable support for comments and trackbacks in post types.
 	add_action( 'admin_init', __NAMESPACE__ . '\\disable_comments_post_types_support' );
 
@@ -88,6 +95,43 @@ function init() {
 
 	// Disable Gutenberg comments blocks.
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\disable_comments_blocks' );
+
+	// Add admin notice on activation.
+	add_action( 'admin_notices', __NAMESPACE__ . '\\activation_notice' );
+}
+
+/**
+ * Load plugin text domain for translations.
+ *
+ * @since 1.0.2
+ *
+ * @return void
+ */
+function load_textdomain() {
+	load_plugin_textdomain(
+		'disable-comments',
+		false,
+		dirname( plugin_basename( __FILE__ ) ) . '/languages'
+	);
+}
+
+/**
+ * Display admin notice after activation.
+ *
+ * @since 1.0.2
+ *
+ * @return void
+ */
+function activation_notice() {
+	$screen = get_current_screen();
+	if ( 'plugins' === $screen->id && get_transient( 'simple_disable_comments_activated' ) ) {
+		?>
+		<div class="notice notice-success is-dismissible">
+			<p><?php esc_html_e( 'Simple Disable Comments is now active. All comment functionality has been disabled across your site.', 'disable-comments' ); ?></p>
+		</div>
+		<?php
+		delete_transient( 'simple_disable_comments_activated' );
+	}
 }
 
 /**
@@ -162,8 +206,10 @@ function remove_admin_bar_comments() {
  */
 function remove_network_comment_links( $wp_admin_bar ) {
 	if ( is_user_logged_in() ) {
-		foreach ( (array) $wp_admin_bar->user->blogs as $blog ) {
-			$wp_admin_bar->remove_menu( 'blog-' . $blog->userblog_id . '-c' );
+		if ( isset( $wp_admin_bar->user->blogs ) && is_array( $wp_admin_bar->user->blogs ) ) {
+			foreach ( $wp_admin_bar->user->blogs as $blog ) {
+				$wp_admin_bar->remove_menu( 'blog-' . $blog->userblog_id . '-c' );
+			}
 		}
 	} else {
 		// We have no way to know whether the plugin is active on other sites, so only remove this one.
@@ -321,14 +367,31 @@ function filter_rest_endpoints( $endpoints ) {
  * @return void
  */
 function disable_comments_blocks() {
-	wp_enqueue_script(
-		'disable-comments-blocks',
-		plugin_dir_url( __FILE__ ) . 'assets/disable-comments-blocks.js',
-		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
-		'1.0.0',
-		true
-	);
+	$script_path = plugin_dir_path( __FILE__ ) . 'assets/disable-comments-blocks.js';
+	
+	if ( file_exists( $script_path ) ) {
+		wp_enqueue_script(
+			'disable-comments-blocks',
+			plugin_dir_url( __FILE__ ) . 'assets/disable-comments-blocks.js',
+			array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
+			SIMPLE_DISABLE_COMMENTS_VERSION,
+			true
+		);
+	}
 }
+
+/**
+ * Activation hook.
+ *
+ * @since 1.0.2
+ *
+ * @return void
+ */
+function activate() {
+	set_transient( 'simple_disable_comments_activated', true, 30 );
+}
+
+register_activation_hook( __FILE__, __NAMESPACE__ . '\\activate' );
 
 // Initialize the plugin.
 init();
