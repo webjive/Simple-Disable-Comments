@@ -1,7 +1,7 @@
 {
 	"name": "webjive/simple-disable-comments",
-	"version": "1.0.2",
-	"description": "Completely disables comments functionality in WordPress. Zero configuration needed.",
+	"version": "1.0.3",
+	"description": "Completely disables comments functionality in WordPress. Zero configuration needed. Enhanced by WebJIVE.",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
 	"authors": [
