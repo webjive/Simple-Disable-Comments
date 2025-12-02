@@ -1,10 +1,12 @@
-# Disable Comments
+# Simple Disable Comments
 
 A simple and lightweight WordPress plugin that completely disables comments functionality across your entire WordPress site.
 
 ## Description
 
 This plugin disables all comments functionality in WordPress with no configuration needed. Simply activate the plugin and all comment features will be disabled.
+
+**Forked from BeAPI/disable-comments** - Enhanced and maintained by WebJIVE.
 
 ## Features
 
@@ -20,6 +22,7 @@ This plugin disables all comments functionality in WordPress with no configurati
 - Removes comments metabox from dashboard
 - Removes "At a Glance" dashboard widget with comment count
 - Removes comments column from posts list
+- Shows activation notice when plugin is enabled
 
 ### Widgets & Scripts
 - Removes Recent Comments widget
@@ -63,7 +66,7 @@ This plugin disables all comments functionality in WordPress with no configurati
 
 ## Installation
 
-1. Upload the `disable-comments` folder to the `/wp-content/plugins/` directory
+1. Upload the `simple-disable-comments` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. That's it! Comments are now completely disabled
 
@@ -104,7 +107,6 @@ Yes, the plugin disables all 15 comment-related Gutenberg blocks, preventing the
 
 Yes, the plugin disables comment endpoints in the WordPress REST API and prevents comment insertion via API requests.
 
-
 ### Does this plugin automatically replace the previous "Disable Comments" plugin from WordPress.org?
 
 Yes, this plugin will automatically replace the original open-source [Disable Comments](https://wordpress.org/plugins/disable-comments/) plugin if you overwrite the old plugin folder with this one. This works because both plugins use the same folder name (`disable-comments`) and main PHP file. No reactivation is required after replacing the files—just copy over the new files and the updated plugin will be used immediately.  
@@ -112,12 +114,23 @@ Please note, however, that any options or settings saved by the previous plugin 
 
 ## Changelog
 
+### 1.0.2
+* Fixed file existence check before enqueuing JavaScript
+* Added version constant for better cache busting
+* Added text domain loading for translations
+* Fixed multisite property check for better error handling
+* Updated all branding to WebJIVE
+* Added activation notice
+* Added activation hook
+* Created uninstall.php for proper cleanup
+* Improved JavaScript with error handling and polyfills
+* Enhanced code quality and documentation
 
 ### 1.0.1
 * Fix Update URI to not have updates showing
 
 ### 1.0.0
-* Initial release
+* Initial release (BeAPI version)
 
 ## License
 
@@ -125,11 +138,20 @@ GPL v2 or later
 
 ## Credits
 
-Inspired by:
+Forked from [BeAPI/disable-comments](https://github.com/BeAPI/disable-comments)
+
+Original inspiration by:
 - [Disable Comments plugin](https://wordpress.org/plugins/disable-comments/) - The original WordPress.org plugin
 - [WPBeginner Tutorial](https://www.wpbeginner.com/wp-tutorials/how-to-completely-disable-comments-in-wordpress/) - Comprehensive guide on disabling comments
 
 ## Author
 
-BeAPI - [https://beapi.fr](https://beapi.fr)
+WebJIVE - Digital Marketing Agency  
+Little Rock, Arkansas  
+[https://web-jive.com](https://web-jive.com)
 
+## Support
+
+For issues, feature requests, or questions:
+- GitHub Issues: [https://github.com/webjive/Simple-Disable-Comments/issues](https://github.com/webjive/Simple-Disable-Comments/issues)
+- Email: support@web-jive.com
