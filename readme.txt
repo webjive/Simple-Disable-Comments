@@ -1,20 +1,20 @@
-=== Simple Disable Comments ===
+=== WebJIVE Simple Disable Comments ===
 Contributors: webjive
 Tags: comments, disable comments, remove comments, block comments, spam
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Completely disables comments functionality in WordPress. Zero configuration needed.
+Completely disables comments functionality in WordPress. Zero configuration needed. Enhanced by WebJIVE.
 
 == Description ==
 
-Simple Disable Comments is a lightweight plugin that completely disables all comments functionality across your entire WordPress site with no configuration needed. Simply activate and forget.
+WebJIVE Simple Disable Comments is a lightweight plugin that completely disables all comments functionality across your entire WordPress site with no configuration needed. Simply activate and forget.
 
-Forked from BeAPI/disable-comments and enhanced by WebJIVE for improved reliability and code quality.
+Forked from BeAPI/disable-comments and enhanced by [WebJIVE Digital Marketing](https://web-jive.com) for improved reliability and code quality.
 
 = Features =
 
@@ -63,6 +63,13 @@ Yes, fully compatible with Multisite installations.
 
 == Changelog ==
 
+= 1.0.3 =
+* Updated plugin name to "WebJIVE Simple Disable Comments" for better branding
+* Changed Plugin URI to web-jive.com for fixes and contributions
+* Enhanced activation notice with link back to WebJIVE
+* Updated author information to "WebJIVE - Digital Marketing Agency"
+* Improved plugin header documentation
+
 = 1.0.2 =
 * Fixed file existence check before enqueuing JavaScript
 * Added version constant for better cache busting
@@ -82,6 +89,9 @@ Yes, fully compatible with Multisite installations.
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+Branding update: Plugin name now displays as "WebJIVE Simple Disable Comments" with proper attribution.
 
 = 1.0.2 =
 Major code quality improvements, bug fixes, and better error handling. Recommended update for all users.
