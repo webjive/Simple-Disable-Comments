@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Simple Disable Comments
- * Plugin URI: https://github.com/webjive/Simple-Disable-Comments
- * Description: Completely disables comments functionality in WordPress. Zero configuration needed.
- * Version: 1.0.2
+ * Plugin Name: WebJIVE Simple Disable Comments
+ * Plugin URI: https://web-jive.com/simple-disable-comments/
+ * Description: Completely disables comments functionality in WordPress. Zero configuration needed. Enhanced and maintained by WebJIVE.
+ * Version: 1.0.3
  * Requires at least: 5.0
  * Requires PHP: 7.4
- * Author: WebJIVE
+ * Author: WebJIVE - Digital Marketing Agency
  * Author URI: https://web-jive.com
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -14,7 +14,7 @@
  * Domain Path: /languages
  * Update URI: https://github.com/webjive/Simple-Disable-Comments/releases/latest
  *
- * Forked from BeAPI/disable-comments
+ * Forked from BeAPI/disable-comments and enhanced by WebJIVE (https://web-jive.com)
  * Original inspiration by:
  * - Disable Comments plugin: https://wordpress.org/plugins/disable-comments/
  * - WPBeginner Tutorial: https://www.wpbeginner.com/wp-tutorials/how-to-completely-disable-comments-in-wordpress/
@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin version.
-define( 'SIMPLE_DISABLE_COMMENTS_VERSION', '1.0.2' );
+define( 'SIMPLE_DISABLE_COMMENTS_VERSION', '1.0.3' );
 
 /**
  * Initialize WordPress hooks.
@@ -127,7 +127,17 @@ function activation_notice() {
 	if ( 'plugins' === $screen->id && get_transient( 'simple_disable_comments_activated' ) ) {
 		?>
 		<div class="notice notice-success is-dismissible">
-			<p><?php esc_html_e( 'Simple Disable Comments is now active. All comment functionality has been disabled across your site.', 'disable-comments' ); ?></p>
+			<p>
+				<?php esc_html_e( 'WebJIVE Simple Disable Comments is now active. All comment functionality has been disabled across your site.', 'disable-comments' ); ?>
+				<br>
+				<?php
+				printf(
+					/* translators: %s: link to WebJIVE website */
+					esc_html__( 'Enhanced and maintained by %s', 'disable-comments' ),
+					'<a href="https://web-jive.com" target="_blank" rel="noopener noreferrer">WebJIVE Digital Marketing</a>'
+				);
+				?>
+			</p>
 		</div>
 		<?php
 		delete_transient( 'simple_disable_comments_activated' );
