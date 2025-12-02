@@ -1,4 +1,4 @@
-# Simple Disable Comments
+# WebJIVE Simple Disable Comments
 
 A simple and lightweight WordPress plugin that completely disables comments functionality across your entire WordPress site.
 
@@ -6,7 +6,7 @@ A simple and lightweight WordPress plugin that completely disables comments func
 
 This plugin disables all comments functionality in WordPress with no configuration needed. Simply activate the plugin and all comment features will be disabled.
 
-**Forked from BeAPI/disable-comments** - Enhanced and maintained by WebJIVE.
+**Forked from BeAPI/disable-comments** - Enhanced and maintained by [WebJIVE Digital Marketing](https://web-jive.com).
 
 ## Features
 
@@ -113,6 +113,12 @@ Yes, this plugin will automatically replace the original open-source [Disable Co
 Please note, however, that any options or settings saved by the previous plugin are not removed during this process.
 
 ## Changelog
+
+### 1.0.3
+* Updated plugin name to "WebJIVE Simple Disable Comments" for better branding
+* Changed Plugin URI to web-jive.com
+* Enhanced activation notice with link to WebJIVE
+* Updated author information to "WebJIVE - Digital Marketing Agency"
 
 ### 1.0.2
 * Fixed file existence check before enqueuing JavaScript
